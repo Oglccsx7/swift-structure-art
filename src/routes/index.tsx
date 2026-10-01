@@ -66,7 +66,6 @@ function Index() {
           <a href="#inicio" onClick={() => setMobileMenu(false)}><Home size={13} /> INÍCIO</a>
           <a href="#catalogo" onClick={() => setMobileMenu(false)}><Star size={13} /> CATÁLOGO</a>
           <a href="#novidades" onClick={() => setMobileMenu(false)}><Megaphone size={13} /> NOVIDADES</a>
-          <a href="#contato" onClick={() => setMobileMenu(false)}><Users size={13} /> SEJA AFILIADO</a>
         </nav>
         <label className="search-box"><Search size={15} /><input aria-label="Buscar produtos" placeholder="Buscar produtos..." value={query} onChange={e => setQuery(e.target.value)} /></label>
         <Button variant="nav" size="sm" className="account-button" onClick={() => document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })}><UserRound size={15} /> Minha Conta <ChevronDown size={12} /></Button>
