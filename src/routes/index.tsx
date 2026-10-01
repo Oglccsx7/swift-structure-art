@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowRight, Bell, Check, ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Clock3, CreditCard, Gamepad2, Home, Mail, MapPin, Megaphone, Menu, MessageCircle, Search, ShieldCheck, ShoppingCart, Star, Trash2, UserRound, Users, X, Zap } from "lucide-react";
+import { ArrowRight, Bell, Check, ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Clock3, CreditCard, Gamepad2, Home, Mail, MapPin, Megaphone, Menu, MessageCircle, Search, ShieldCheck, ShoppingCart, Star, Trash2, UserRound, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -66,7 +66,6 @@ function Index() {
           <a href="#inicio" onClick={() => setMobileMenu(false)}><Home size={13} /> INÍCIO</a>
           <a href="#catalogo" onClick={() => setMobileMenu(false)}><Star size={13} /> CATÁLOGO</a>
           <a href="#novidades" onClick={() => setMobileMenu(false)}><Megaphone size={13} /> NOVIDADES</a>
-          <a href="#contato" onClick={() => setMobileMenu(false)}><Users size={13} /> SEJA AFILIADO</a>
         </nav>
         <label className="search-box"><Search size={15} /><input aria-label="Buscar produtos" placeholder="Buscar produtos..." value={query} onChange={e => setQuery(e.target.value)} /></label>
         <Button variant="nav" size="sm" className="account-button" onClick={() => document.getElementById("contato")?.scrollIntoView({ behavior: "smooth" })}><UserRound size={15} /> Minha Conta <ChevronDown size={12} /></Button>
