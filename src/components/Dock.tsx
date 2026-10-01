@@ -11,7 +11,7 @@ export interface DockItemData {
 
 interface DockItemProps {
   children: ReactNode;
-  className?: string;
+  className?: string | undefined;
   onClick: () => void;
   mouseX: MotionValue<number>;
   spring: { mass: number; stiffness: number; damping: number };
