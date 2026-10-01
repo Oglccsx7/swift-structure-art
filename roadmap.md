@@ -1,0 +1,3 @@
+- [x] Reproduce the supplied storefront layout and typography with emerald accents.
+- [x] Leave all image areas empty for later replacement.
+- [x] Make the visible search, categories, cart, navigation, and FAQ interactive.
