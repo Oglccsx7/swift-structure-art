@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowRight, Bell, Check, ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Clock3, CreditCard, Gamepad2, Home, Mail, MapPin, Megaphone, Menu, MessageCircle, Search, ShieldCheck, ShoppingCart, Star, Trash2, UserRound, Users, X, Zap } from "lucide-react";
+import { ArrowRight, Bell, Check, ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Clock3, CreditCard, Gamepad2, Home, Mail, MapPin, Megaphone, Menu, MessageCircle, Search, ShieldCheck, ShoppingCart, Star, Trash2, UserRound, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
