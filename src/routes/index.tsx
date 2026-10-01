@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Bell, Check, ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Clock3, CreditCard, Gamepad2, Home, Mail, MapPin, Megaphone, Menu, MessageCircle, Search, ShieldCheck, ShoppingCart, Star, Trash2, UserRound, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Dock from "@/components/Dock";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,6 +57,15 @@ function Index() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const visibleGames = useMemo(() => games.filter(g => g.toLocaleLowerCase("pt-BR").includes(query.toLocaleLowerCase("pt-BR"))), [query]);
   const addItem = (name: string) => { setCart(current => [...current, name]); setCartOpen(true); };
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const dockItems = [
+    { icon: <Home size={20} />, label: "Início", onClick: () => scrollTo("inicio") },
+    { icon: <Star size={20} />, label: "Catálogo", onClick: () => scrollTo("catalogo") },
+    { icon: <Megaphone size={20} />, label: "Novidades", onClick: () => scrollTo("novidades") },
+    { icon: <CircleHelp size={20} />, label: "FAQ", onClick: () => scrollTo("faq") },
+    { icon: <MessageCircle size={20} />, label: "Suporte", onClick: () => scrollTo("contato") },
+    { icon: <ShoppingCart size={20} />, label: "Carrinho", onClick: () => setCartOpen(true) },
+  ];
 
   return <div className="site-shell" id="inicio">
     <header className="site-header">
@@ -117,5 +127,7 @@ function Index() {
     <footer className="footer"><div className="footer-grid"><div><h3>Sobre</h3><p>A maior loja de itens e contas digitais no Brasil.</p><a href="mailto:suporte@virtualities.com.br"><Mail size={15}/> suporte@virtualities.com.br</a><span><MapPin size={15}/> Brasil</span></div><div><h3>Links Rápidos</h3><a href="#inicio">Início</a><a href="#catalogo">Catálogo</a><a href="#novidades">Novidades</a><a href="#jogos">Jogos</a><a href="#contato">Contato</a></div><div><h3>Suporte</h3><a href="#faq">FAQ</a><a href="mailto:suporte@virtualities.com.br">Fale conosco</a></div><div><h3>Redes Sociais</h3><p>Siga nossas redes sociais e fique por dentro das novidades.</p></div></div><div className="footer-bottom">Virtualities © 2026. Todos os direitos reservados.</div></footer>
 
     {cartOpen && <div className="cart-overlay" onMouseDown={() => setCartOpen(false)}><aside className="cart-panel" aria-label="Carrinho" onMouseDown={e => e.stopPropagation()}><div className="cart-panel-header"><h2>Meu carrinho <span>({cart.length})</span></h2><Button variant="nav" size="icon" aria-label="Fechar carrinho" onClick={() => setCartOpen(false)}><X size={20}/></Button></div>{cart.length ? <><div className="cart-items">{cart.map((name, i) => <div className="cart-item" key={`${name}-${i}`}><span className="cart-item-image empty-media"/><strong>{name}</strong><Button variant="nav" size="icon" aria-label={`Remover ${name}`} onClick={() => setCart(current => current.filter((_, index) => index !== i))}><Trash2 size={16}/></Button></div>)}</div><p className="cart-note"><Check size={15}/> {cart.length} {cart.length === 1 ? "item adicionado" : "itens adicionados"} ao carrinho</p></> : <div className="cart-empty"><ShoppingCart size={36}/><p>Seu carrinho está vazio.</p><Button variant="commerce" onClick={() => setCartOpen(false)}>Continuar explorando</Button></div>}</aside></div>}
+
+    <Dock items={dockItems} />
   </div>;
 }
