@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowRight, Bell, Check, ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Clock3, CreditCard, Gamepad2, Home, Mail, MapPin, Megaphone, Menu, MessageCircle, Search, ShieldCheck, ShoppingCart, Star, Trash2, UserRound, X, Zap } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ChevronLeft, ChevronRight, CircleHelp, Clock3, CreditCard, Gamepad2, Home, Mail, MapPin, Megaphone, Menu, MessageCircle, Search, ShieldCheck, ShoppingCart, Star, Trash2, UserRound, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Dock from "@/components/Dock";
 
@@ -35,6 +35,14 @@ const news = [
   { type: "REPOSIÇÃO", title: "Conta com Clan Rengoku (0.1%) voltou ao estoque", desc: "Voltou! Conta com Clan Rengoku está disponível novamente.", time: "há 53 min" },
   { type: "NOVIDADE", title: "Novo no catálogo: Small Storage", desc: "Novidade fresquinha em Anime Breaker — corre conferir antes que acabe.", time: "há 53 min" },
   { type: "NOVIDADE", title: "Novo no catálogo: Big Storage", desc: "Novidade fresquinha em Anime Breaker — corre conferir antes que acabe.", time: "há 53 min" },
+];
+const reviews = [
+  { text: "Muito rápido atencioso já tinha comprado muito bom", author: "Azu***" },
+  { text: "Muito rápido em menos de 1 min foi minha entrega", author: "arthurzin********" },
+  { text: "Mano só tem uma coisa a dizer essa loja é incrível", author: "is08*****" },
+  { text: "Fui muito bem atendido e recebi meu item", author: "new***" },
+  { text: "MUITOOOO BOMMMMM VOU ATÉ COMPRAR MAIS TARDE", author: "lalau****" },
+  { text: "deu certo aqui o pack obrigado virtualities!", author: "pietrofer*******" },
 ];
 const faqs = [
   { q: "Como funciona o processo de compra?", a: "Escolha o produto desejado, adicione ao carrinho e finalize a compra. Após a confirmação do pagamento, siga as instruções de entrega informadas no pedido." },
@@ -117,7 +125,7 @@ function Index() {
 
       <section className="wide-promo empty-media"><div className="wide-promo-content"><h2><span className="highlight-box">Vantagens</span><br/>que os outros não têm</h2><p>Suba de nível, destrave itens raros e jogue no seu máximo. Sua evolução começa na <strong>Virtualities.</strong></p><Button variant="commerce" size="lg" asChild><a href="#catalogo">Bora Evoluir <ArrowRight size={18}/></a></Button></div></section>
 
-      <section className="content-section reviews-section"><Heading icon={MessageCircle}>Avaliações dos <em>Clientes</em></Heading><div className="review-summary"><div className="review-stats"><div><strong>+50k</strong><span>Clientes satisfeitos</span></div><div><strong>91%</strong><span>deram 4 ou 5 estrelas</span></div><div><strong>24h</strong><span>Suporte por dia</span></div></div><div className="review-score"><strong>4,6</strong><span className="stars">★★★★★</span><small>15.042 avaliações</small></div></div><div className="review-grid">{["Muito rápido atencioso já tinha comprado muito bom", "Muito rápido em menos de 1 min foi minha entrega", "Mano só tem uma coisa a dizer essa loja é incrível", "Fui muito bem atendido e recebi meu item", "MUITOOOO BOMMMMM VOU ATÉ COMPRAR MAIS TARDE", "deu certo aqui o pack obrigado virtualities!"].map((text, i) => <article className="review-card" key={i}><div className="review-author"><span className="review-avatar empty-media"/><div><strong>{["Azu***", "arthurzin********", "is08*****", "new***", "lalau****", "pietrofer*******"][i]}</strong><span className="stars">★★★★★</span></div><small>Comprador verificado</small></div><p>“{text}”</p><span className="review-rating">★ 5.0</span></article>)}</div></section>
+      <section className="content-section reviews-section"><Heading icon={MessageCircle}>Avaliações dos <em>Clientes</em></Heading><div className="review-summary"><div className="review-stats"><div><strong>+50k</strong><span>Clientes satisfeitos</span></div><div><strong>91%</strong><span>deram 4 ou 5 estrelas</span></div><div><strong>24h</strong><span>Suporte por dia</span></div></div><div className="review-score"><strong>4,6</strong><span className="stars">★★★★★</span><small>15.042 avaliações</small></div></div><div className="review-marquee" aria-label="Avaliações de clientes"><div className="review-grid review-track">{[...reviews, ...reviews].map((review, i) => <article className="review-card" key={`${review.author}-${i}`}><div className="review-author"><span className="review-avatar empty-media"/><div><strong>{review.author}</strong><span className="stars">★★★★★</span></div><small>Comprador verificado</small></div><p>“{review.text}”</p><span className="review-rating">★ 5.0</span></article>)}</div></div></section>
 
       <section className="content-section faq-section" id="faq"><Heading icon={CircleHelp}>Dúvidas <em>Frequentes</em></Heading><p className="section-subtitle">Encontre respostas rápidas para as perguntas mais comuns sobre nossos serviços</p><div className="faq-list">{faqs.map((faq, i) => <div className={`faq-item ${openFaq === i ? "active" : ""}`} key={faq.q}><Button variant="faq" aria-expanded={openFaq === i} onClick={() => setOpenFaq(openFaq === i ? -1 : i)}>{faq.q}<span><ChevronDown size={17}/></span></Button>{openFaq === i && <p>{faq.a}</p>}</div>)}</div></section>
 
