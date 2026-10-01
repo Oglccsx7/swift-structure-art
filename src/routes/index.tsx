@@ -57,6 +57,15 @@ function Index() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const visibleGames = useMemo(() => games.filter(g => g.toLocaleLowerCase("pt-BR").includes(query.toLocaleLowerCase("pt-BR"))), [query]);
   const addItem = (name: string) => { setCart(current => [...current, name]); setCartOpen(true); };
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const dockItems = [
+    { icon: <Home size={20} />, label: "Início", onClick: () => scrollTo("inicio") },
+    { icon: <Star size={20} />, label: "Catálogo", onClick: () => scrollTo("catalogo") },
+    { icon: <Megaphone size={20} />, label: "Novidades", onClick: () => scrollTo("novidades") },
+    { icon: <CircleHelp size={20} />, label: "FAQ", onClick: () => scrollTo("faq") },
+    { icon: <MessageCircle size={20} />, label: "Suporte", onClick: () => scrollTo("contato") },
+    { icon: <ShoppingCart size={20} />, label: "Carrinho", onClick: () => setCartOpen(true) },
+  ];
 
   return <div className="site-shell" id="inicio">
     <header className="site-header">
